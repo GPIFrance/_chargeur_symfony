@@ -1,0 +1,44 @@
+#
+# Home
+#
+app_home_index:
+    path:       /
+    defaults:
+        _controller: AppBundle:Home:index
+app_home_signin:
+    path:       /signin
+    defaults:
+        _controller: AppBundle:Home:signin
+app_home_signin_check:
+    path:       /signin_check
+app_home_signout:
+    path:       /signout
+#
+# UI
+#
+app_ui_index:
+    path:       /ui
+    defaults:
+        _controller: AppBundle:UI:index
+app_ui_search:
+    path:       /ui/search/{query}
+    defaults:
+        _controller: AppBundle:UI:search
+#
+# Help
+#
+app_help_index:
+    path:       /help
+    defaults:
+        _controller: AppBundle:Help:index
+#
+# Admin
+#
+app_admin:
+    path:       /admin
+    defaults:
+        _controller: AppBundle:Admin:index
+app_set_default_data:
+    path:       /admin/set_default_data
+    defaults:
+        _controller: AppBundle:Admin:setDefaultData

@@ -1,0 +1,28 @@
+{% set menuItems = getMenu() %}
+
+{% extends '@App/base.ui.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block content_body %}
+	<div class="ui stackable centered grid">
+		<div class="row">
+			<div class="ui six wide column raised segments">
+				{% for menu in menuItems %}
+					<div class="ui padded segment">
+						<a href="{{ menu.pmHref is not empty ? path(menu.pmHref) : '#' }}">
+							<div class="ui huge header">{{ menu.pmLibel }}</div>
+							<p>{{ menu.pmMsgContent }}</p>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content_script %}{{ parent() }}
+	<script>
+
+	</script>
+{% endblock %}

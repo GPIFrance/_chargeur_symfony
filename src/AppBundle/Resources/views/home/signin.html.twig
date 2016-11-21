@@ -1,0 +1,33 @@
+{% extends '@App/base.home.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block content_body %}
+	<div class="ui middle aligned center aligned grid">
+		<div class="column" style="max-width: 450px;">
+			<img src="{{ asset('images/logo.jpg') }}" alt="" class="ui bordered centered medium image">
+			<h1 class="ui header">Connexion</h1>
+			<form action="{{ path('app_home_signin_check') }}" method="post" class="ui form">
+				<div class="ui left aligned stacked segment">
+					<div class="field">
+						<input name="_username" type="text" placeholder="Utilisateur">
+					</div>
+					<div class="field">
+						<input name="_password" type="password" placeholder="Mot de passe">
+					</div>
+					<button type="submit" class="ui fluid positive button">Connexion</button>
+				</div>
+				<div class="ui error message"></div>
+			</form>
+			<div class="ui message">
+				<a data-position="top center" data-content="Manuel d'utilisation" href="{{ path('app_help_index') }}">Aide</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content_script %}{{ parent() }}
+	<script>
+		$('a').popup();
+	</script>
+{% endblock %}

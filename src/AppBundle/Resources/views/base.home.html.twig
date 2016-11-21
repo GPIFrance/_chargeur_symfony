@@ -1,0 +1,24 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+	<div class="ui inverted segment no-radius">
+		<div class="ui massive inverted secondary menu">
+			<a href="{{ path('app_home_index') }}" class="header item">Site chargeur</a>
+			<div class="right menu">
+				{% if app.user %}
+					<a href="{{ path('app_ui_index') }}" class="item">Retour à l'interface utilisateur</a>
+				{% else %}
+					<a href="{{ path('app_home_signin') }}" class="item">Connexion</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	{% include '@App/_components/flash_messages.html.twig' %}
+	{% block content_body %}{% endblock %}
+{% endblock %}
+
+{% block javascripts %}{{ parent() }}
+	{% block content_script %}{% endblock %}
+{% endblock %}

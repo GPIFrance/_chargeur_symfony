@@ -1,0 +1,28 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+	<div class="ui fixed inverted vertical menu" style="height: 100%;">
+		{% for menu in getMenu() %}
+			<a data-content="{{ menu.pmMsgContent }}"
+				 data-position="{{ menu.pmMsgPosition }}"
+					{% if menu.pmHref is not empty %}
+						href="{{ path(menu.pmHref) }}"
+					{% endif %}
+				 class="item">{{ menu.pmLibel }}
+			</a>
+		{% endfor %}
+	</div>
+	<div style="padding-left: 15rem;">
+		{% include '@App/_components/flash_messages.html.twig' %}
+		{% block content_body %}{% endblock %}
+	</div>
+{% endblock %}
+
+{% block javascripts %}{{ parent() }}
+	<script>
+		$('*').popup();
+	</script>
+	{% block content_script %}{% endblock %}
+{% endblock %}
