@@ -24,6 +24,14 @@ app_ui_search:
     path:       /ui/search/{query}
     defaults:
         _controller: AppBundle:UI:search
+app_ui_chgtliv:
+    path:       /ui/points_chargment_delivrery
+    defaults:
+        _controller: AppBundle:UI:ptsChgtDlry
+app_ui_order_entry:
+    path:       /ui/order_entry
+    defaults:
+        _controller: AppBundle:UI:orderEntry
 #
 # Help
 #
@@ -42,3 +50,10 @@ app_set_default_data:
     path:       /admin/set_default_data
     defaults:
         _controller: AppBundle:Admin:setDefaultData
+#
+# Api
+#
+app_api_get:
+    path:       /api/get/{entity}       #/api/get/{entity}(?{field}={value})
+    defaults:
+        _controller: AppBundle:Api:get

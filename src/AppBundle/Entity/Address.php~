@@ -138,7 +138,37 @@ class Address
      *
      * @ORM\Column(name="rdv", type="boolean")
      */
-    private $rdv;
+    private $rdv = false;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User", cascade={"all"})
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * Address constructor.
+     */
+    public function __construct()
+    {
+        $this->address1     = '';
+        $this->address2     = '';
+        $this->address3     = '';
+        $this->address4     = '';
+        $this->address5     = '';
+        $this->zipCode      = '';
+        $this->city         = '';
+        $this->country      = '';
+        $this->comment      = '';
+        $this->phone        = '';
+        $this->cellphone    = '';
+        $this->fax          = '';
+        $this->def          = false;
+        $this->addressCode  = '';
+        $this->rdv          = false;
+    }
 
     /**
      * Get id
@@ -533,5 +563,28 @@ class Address
     {
         return $this->addressCode;
     }
-}
 
+    /**
+     * Set rdv
+     *
+     * @param boolean $rdv
+     *
+     * @return Address
+     */
+    public function setRdv($rdv)
+    {
+        $this->rdv = $rdv;
+
+        return $this;
+    }
+
+    /**
+     * Get rdv
+     *
+     * @return boolean
+     */
+    public function getRdv()
+    {
+        return $this->rdv;
+    }
+}

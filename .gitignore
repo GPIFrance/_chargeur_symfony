@@ -15,5 +15,3 @@
 /vendor/
 /web/bundles/
 /.idea
-var/cache/
-web/css/themes/

@@ -36,7 +36,7 @@ class AppExtension extends \Twig_Extension
     }
 
     /**
-     * Retourne les éléments du menu de la table param_menu
+     * Retourne les éléments du menu de la table param_menu.
      *
      * @return \AppBundle\Entity\ParamMenu[]|array
      */
@@ -46,9 +46,9 @@ class AppExtension extends \Twig_Extension
     }
 
     /**
-     * Convertion d'un chiffre int en lettre.
-     * 1 => one
-     * Max fixé à 16
+     * Convertion d'un chiffre int en lettre.</br>
+     * 1 => 'one'</br>
+     * Retourne null si $number > 16 ou < 1.
      *
      * @param $number
      * @return mixed|null
