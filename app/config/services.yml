@@ -14,3 +14,7 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+    app.table_schema:
+        class: AppBundle\Services\TableSchemaService
+        arguments:
+            nameSpace: "\\AppBundle\\Entity\\"

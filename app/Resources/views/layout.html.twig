@@ -1,6 +1,7 @@
 {% set errorMsg = app.session.flashBag.get('error') %}
 {% set successMsg = app.session.flashBag.get('success') %}
 {% set noticeMsg = app.session.flashBag.get('notice') %}
+{% set _route = app.request.attributes.get('_route') %}
 <!DOCTYPE html>
 <html>
 <head>

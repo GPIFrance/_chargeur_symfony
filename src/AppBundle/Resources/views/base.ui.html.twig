@@ -10,7 +10,7 @@
 					{% if menu.pmHref is not empty %}
 						href="{{ path(menu.pmHref) }}"
 					{% endif %}
-				 class="item">{{ menu.pmLibel }}
+				 class="item {{ _route == menu.pmHref ? 'active' }}">{{ menu.pmLibel }}
 			</a>
 		{% endfor %}
 	</div>
