@@ -2,15 +2,18 @@
 
 namespace AppBundle\Twig\Extension;
 
+use AppBundle\Services\TableSchemaService;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class AppExtension extends \Twig_Extension
 {
     protected $doctrine;
+    protected $schemaService;
 
-    public function __construct(RegistryInterface $doctrine)
+    public function __construct(RegistryInterface $doctrine, TableSchemaService $schemaService)
     {
         $this->doctrine = $doctrine;
+        $this->schemaService = $schemaService;
     }
 
     /**
@@ -32,11 +35,12 @@ class AppExtension extends \Twig_Extension
     {
         return array(
           new \Twig_SimpleFunction('getMenu', array($this, 'getMenuFunction')),
+          new \Twig_SimpleFunction('getPropsOfEntity', array($this, 'getPropsOfEntityFunction')),
         );
     }
 
     /**
-     * Retourne les éléments du menu de la table param_menu.
+     * Retourne les éléments du menu de la table param_menu.<br>
      *
      * @return \AppBundle\Entity\ParamMenu[]|array
      */
@@ -46,8 +50,19 @@ class AppExtension extends \Twig_Extension
     }
 
     /**
+     * Retourne la liste des propriétés/attributs d'une entité.<br>
+     *
+     * @param $entity
+     * @return array
+     */
+    public function getPropsOfEntityFunction($entity)
+    {
+        return $this->schemaService->getPropsOf($entity);
+    }
+
+    /**
      * Convertion d'un chiffre int en lettre.</br>
-     * 1 => 'one'</br>
+     * <b>1 => 'one'</b></br>
      * Retourne null si $number > 16 ou < 1.
      *
      * @param $number

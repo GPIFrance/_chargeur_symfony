@@ -6,7 +6,9 @@
 	<h1>Points de chargement/livraison</h1>
 	<table>
 		<thead>
-
+		{% for field in getPropsOfEntity('Address') %}
+			<tr><th>{{ field }}</th></tr>
+		{% endfor %}
 		</thead>
 	</table>
 {% endblock %}

@@ -20,7 +20,17 @@ class UIController extends Controller
 
     public function ptsChgtDlryAction()
     {
-        return $this->render('@App/ui/point_chgt_dlry.html.twig');
+        /** @var User $user */
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $addresses = null;
+
+        if($user->getName() == 'admin') $addresses = $em->getRepository('AppBundle:Address')->findAll();
+        else $addresses = $em->getRepository('AppBundle:Address')->findBy(array('user' => $user));
+
+        return $this->render('@App/ui/point_chgt_dlry.html.twig', array(
+            'addresses' => $addresses
+        ));
     }
 
     public function orderEntryAction()
