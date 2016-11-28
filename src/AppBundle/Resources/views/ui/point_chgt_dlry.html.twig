@@ -3,14 +3,63 @@
 {% block title %}Points de chargement/livraison{% endblock %}
 
 {% block content_body %}
-	<h1>Points de chargement/livraison</h1>
-	<table>
-		<thead>
-		{% for field in getPropsOfEntity('Address') %}
-			<tr><th>{{ field }}</th></tr>
-		{% endfor %}
-		</thead>
-	</table>
+	<div class="ui basic segment">
+		<h1 class="ui center aligned header">Points de chargement/livraison</h1>
+	</div>
+	<div class="ui equal width grid">
+		<div class="column">
+			<h2 class="ui center aligned icon header">
+				<i class="circular add icon"></i><a href="#">Ajouter une adresse</a>
+			</h2>
+		</div>
+		<div class="column">
+			<h2 class="ui center aligned icon header">
+				<i class="circular add icon"></i><a href="#">Supprimer des adresses</a>
+			</h2>
+		</div>
+	</div>
+	{#<table class="ui table">#}
+		{#<thead>#}
+		{#<tr>#}
+			{#<th>Nom</th>#}
+			{#<th>Catégorie</th>#}
+			{#<th>Adresse</th>#}
+			{#<th>Code postal</th>#}
+			{#<th>Ville</th>#}
+			{#<th>Pays</th>#}
+			{#<th>Tel.</th>#}
+			{#<th>Port.</th>#}
+			{#<th>Fax</th>#}
+			{#<th>Obs</th>#}
+			{#<th>Défaut</th>#}
+			{#<th></th>#}
+		{#</tr>#}
+		{#</thead>#}
+		{#<tbody>#}
+		{#{% for address in addresses %}#}
+			{#<tr>#}
+				{#<td>{{ address.getName }}</td>#}
+				{#<td>{{ address.getCategory }}</td>#}
+				{#<td>{{ [address.getAddress1,address.getAddress2,address.getAddress3,address.getAddress4,address.getAddress5]|join('<br>')|raw }}</td>#}
+				{#<td>{{ address.getZipCode }}</td>#}
+				{#<td>{{ address.getCity }}</td>#}
+				{#<td>{{ address.getCountry }}</td>#}
+				{#<td>{{ address.getPhone }}</td>#}
+				{#<td>{{ address.getCellPhone }}</td>#}
+				{#<td>{{ address.getFax }}</td>#}
+				{#<td>{{ address.getComment }}</td>#}
+				{#<td>{{ address.getDef ? 'OUI' : 'NON' }}</td>#}
+				{#<td>#}
+					{#<div class="ui fluid buttons">#}
+						{#<a href="#" class="ui button">Modifier</a>#}
+						{#<a href="#" class="ui button">Supprimer</a>#}
+					{#</div>#}
+				{#</td>#}
+			{#</tr>#}
+		{#{% endfor %}#}
+		{#</tbody>#}
+	{#</table>#}
+	<ui-form></ui-form>
 {% endblock %}
 
 {% block content_script %}{{ parent() }}

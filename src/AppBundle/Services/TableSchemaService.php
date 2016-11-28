@@ -20,9 +20,10 @@ class TableSchemaService
      * Retourne un tableau de chaine de chaque attributs de $tableName<br>
      *
      * @param $tableName
+     * @param $exception
      * @return array
      */
-    public function getPropsOf($tableName)
+    public function getPropsOf($tableName, $exception = array())
     {
         $className = $this->nameSpace.$tableName;
         $reflect = new \ReflectionClass(new $className());
@@ -30,7 +31,9 @@ class TableSchemaService
         $propsList = array();
 
         foreach ($props as $prop) {
-            $propsList[] = $prop->getName();
+            if(array_search($prop->getName(), $exception) === false) {
+                $propsList[] = $prop->getName();
+            }
         }
 
         return $propsList;

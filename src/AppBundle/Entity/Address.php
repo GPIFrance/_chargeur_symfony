@@ -143,7 +143,7 @@ class Address
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
      * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
      */
     private $user;

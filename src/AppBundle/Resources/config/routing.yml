@@ -57,3 +57,11 @@ app_api_get:
     path:       /api/get/{entity}       #/api/get/{entity}(?{field}={value})
     defaults:
         _controller: AppBundle:Api:get
+app_api_delete:
+    path:       /api/delete/{entity}/{id}
+    defaults:
+        _controller: AppBundle:Api:delete
+app_api_get_schema:
+    path:       /api/getschema/{entity}
+    defaults:
+        _controller: AppBundle:Api:getSchema
