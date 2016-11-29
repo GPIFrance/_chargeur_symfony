@@ -11,7 +11,7 @@
 			</thead>
 			<tbody>
 			<tr v-for="address in addresses">
-				<ui-form-td v-for="field in addressSchema" :_item="address" :_var="field"></ui-form-td>
+				<ui-form-td v-for="field in addressSchema" :_item="address" :_key="field"></ui-form-td>
 			</tr>
 			</tbody>
 		</table>

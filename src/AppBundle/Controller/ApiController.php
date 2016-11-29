@@ -157,4 +157,24 @@ class ApiController extends Controller
 
         return $this->response;
     }
+
+    public function updateAction(Request $request, $entity)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        // On test la méthode
+        if (!$request->isMethod('POST')) {
+            throw new MethodNotAllowedException(array('POST'), 'Only accept POST method');
+        }
+
+        $entity = $em->getRepository('AppBundle:' . ucfirst($entity))->find($request->request->get('id'));
+
+        $this->response->setContent($this->serializer->serialize([
+            "success" => true,
+            "message" => null,
+            "data" => null
+        ], 'json'));
+
+        return $this->response;
+    }
 }

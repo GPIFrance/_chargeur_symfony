@@ -57,6 +57,10 @@ app_api_get:
     path:       /api/get/{entity}       #/api/get/{entity}(?{field}={value})
     defaults:
         _controller: AppBundle:Api:get
+app_api_update:
+    path:       /api/update/{entity}
+    defaults:
+        _controller: AppBundle:Api:update
 app_api_delete:
     path:       /api/delete/{entity}/{id}
     defaults:
