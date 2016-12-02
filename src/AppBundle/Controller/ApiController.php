@@ -32,7 +32,7 @@ class ApiController extends Controller
 
         $this->response = new Response();
         $this->response->headers->set('Content-Type', 'application/json');
-        $this->response->headers->set('Access-Control-Allow-Origin', 'http://localhost:8080');
+        $this->response->headers->set('Access-Control-Allow-Origin', '*');
     }
 
     /**
@@ -139,6 +139,13 @@ class ApiController extends Controller
         return $this->response;
     }
 
+    /**
+     * Retourne une liste des champs de $entity
+     *
+     * @param Request $request
+     * @param $entity
+     * @return null|Response
+     */
     public function getSchemaAction(Request $request, $entity)
     {
         $tableSchema = $this->get('app.table_schema');
@@ -158,9 +165,18 @@ class ApiController extends Controller
         return $this->response;
     }
 
+    /**
+     * Met à jour l'entité $entity avec les données envoyées en POST
+     *
+     * @param Request $request
+     * @param $entity
+     * @return null|Response
+     */
     public function updateAction(Request $request, $entity)
     {
         $em = $this->getDoctrine()->getManager();
+        $tableSchema = $this->get('app.table_schema');
+        $props = $tableSchema->getPropsOf(ucfirst($entity), array('id', 'user'));
 
         // On test la méthode
         if (!$request->isMethod('POST')) {
@@ -168,6 +184,16 @@ class ApiController extends Controller
         }
 
         $entity = $em->getRepository('AppBundle:' . ucfirst($entity))->find($request->request->get('id'));
+
+        // On associe les valeurs à l'entité
+        foreach ($props as $prop) {
+            $propUcFirst = 'set' . ucfirst($prop);
+            $value = $request->request->get($prop);
+            $entity->$propUcFirst($value);
+        }
+
+        $em->persist($entity);
+        $em->flush();
 
         $this->response->setContent($this->serializer->serialize([
             "success" => true,
