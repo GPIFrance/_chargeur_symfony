@@ -32,7 +32,7 @@ class ApiController extends Controller
 
         $this->response = new Response();
         $this->response->headers->set('Content-Type', 'application/json');
-        $this->response->headers->set('Access-Control-Allow-Origin', 'http://localhost:8080');
+        $this->response->headers->set('Access-Control-Allow-Origin', '*');
     }
 
     /**

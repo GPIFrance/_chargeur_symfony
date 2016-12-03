@@ -1,7 +1,7 @@
 export default class ApiService {
 
   constructor() {
-    this.apiUrl = 'http://localhost:8000/api';
+    this.apiUrl = 'http://localhost:8080/api';
     this.xhr = new XMLHttpRequest();
   }
 
@@ -28,7 +28,7 @@ export default class ApiService {
           reject(res.message);
         }
         resolve(res.data);
-      }
+      };
       this.xhr.send();
     });
   }
@@ -42,7 +42,7 @@ export default class ApiService {
           reject(res.message);
         }
         resolve(res.data);
-      }
+      };
       this.xhr.send();
     })
   }
