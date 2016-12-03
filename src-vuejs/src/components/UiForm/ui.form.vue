@@ -1,7 +1,7 @@
 <template>
 	<div class="ui basic segment" >
 		<div v-if="!charged" class="ui active dimmer" style="height: 300px;">
-			<div class="ui text loader">Chargement</div>
+			<div class="ui text loader">Chargement du tableau ...</div>
 		</div>
 		<table v-else class="ui table">
 			<thead>
@@ -50,7 +50,7 @@
 				return res;
 			},
 			getAddresses() {
-				service.api.getAdresses().then(res => {
+				service.api.getAddresses().then(res => {
 					this.addresses = res;
 					this.charged = true;
 				}).catch(err => console.error(err));

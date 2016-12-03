@@ -18,47 +18,6 @@
 			</h2>
 		</div>
 	</div>
-	{#<table class="ui table">#}
-		{#<thead>#}
-		{#<tr>#}
-			{#<th>Nom</th>#}
-			{#<th>Catégorie</th>#}
-			{#<th>Adresse</th>#}
-			{#<th>Code postal</th>#}
-			{#<th>Ville</th>#}
-			{#<th>Pays</th>#}
-			{#<th>Tel.</th>#}
-			{#<th>Port.</th>#}
-			{#<th>Fax</th>#}
-			{#<th>Obs</th>#}
-			{#<th>Défaut</th>#}
-			{#<th></th>#}
-		{#</tr>#}
-		{#</thead>#}
-		{#<tbody>#}
-		{#{% for address in addresses %}#}
-			{#<tr>#}
-				{#<td>{{ address.getName }}</td>#}
-				{#<td>{{ address.getCategory }}</td>#}
-				{#<td>{{ [address.getAddress1,address.getAddress2,address.getAddress3,address.getAddress4,address.getAddress5]|join('<br>')|raw }}</td>#}
-				{#<td>{{ address.getZipCode }}</td>#}
-				{#<td>{{ address.getCity }}</td>#}
-				{#<td>{{ address.getCountry }}</td>#}
-				{#<td>{{ address.getPhone }}</td>#}
-				{#<td>{{ address.getCellPhone }}</td>#}
-				{#<td>{{ address.getFax }}</td>#}
-				{#<td>{{ address.getComment }}</td>#}
-				{#<td>{{ address.getDef ? 'OUI' : 'NON' }}</td>#}
-				{#<td>#}
-					{#<div class="ui fluid buttons">#}
-						{#<a href="#" class="ui button">Modifier</a>#}
-						{#<a href="#" class="ui button">Supprimer</a>#}
-					{#</div>#}
-				{#</td>#}
-			{#</tr>#}
-		{#{% endfor %}#}
-		{#</tbody>#}
-	{#</table>#}
 	<ui-form></ui-form>
 {% endblock %}
 

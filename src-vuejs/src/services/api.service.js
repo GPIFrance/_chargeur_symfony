@@ -13,13 +13,17 @@ export default class ApiService {
       }
       this.xhr.open('POST', this.apiUrl + '/update/address');
       this.xhr.onload = () => {
-        resolve(JSON.parse(this.xhr.responseText));
+        let res = JSON.parse(this.xhr.responseText);
+        if(!res.success){
+          reject(res.message);
+        }
+        resolve(res.data);
       };
       this.xhr.send(data);
     });
   }
 
-  getAdresses() {
+  getAddresses() {
     return new Promise((resolve, reject) => {
       this.xhr.open('GET', this.apiUrl + '/get/address');
       this.xhr.onload = () => {
