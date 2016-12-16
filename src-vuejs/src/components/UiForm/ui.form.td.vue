@@ -3,7 +3,7 @@
 			v-html="translateBoolean(_item[_key])"
 			@dblclick="enterModeEdition"></td>
 	<td v-else>
-		<div class="ui input" v-bind:class="{ 'input loading': onUpdating }">
+		<div class="ui input" :class="{ 'input loading': onUpdating }">
 			<input v-if="isBoolean(_item[_key])"
 						 @focusout="updateData"
 						 v-model="_item[_key]"
