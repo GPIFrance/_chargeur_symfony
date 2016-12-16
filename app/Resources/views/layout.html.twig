@@ -18,6 +18,7 @@
 <body>
 {% block body %}{% endblock %}
 {% block javascripts %}
+	{% include '@App/_components/environment.html.twig' %}
 	{% javascripts '@jquery_js' '@semantic_js' %}
 	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}

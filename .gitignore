@@ -15,7 +15,8 @@
 /vendor/
 /web/bundles/
 /.idea
+/.vscode
 .DS_Store
-node_modules/
-web/dist/
+/node_modules/
+/web/dist/
 npm-debug.log
