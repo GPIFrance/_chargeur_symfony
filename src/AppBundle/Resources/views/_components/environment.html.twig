@@ -1,0 +1,10 @@
+<script>
+    window.environment = {
+			{% if app.user %}
+        user: {
+            username: "{{ app.user.username|raw }}",
+            roles: {{ app.user.roles|json_encode|raw }}
+        }
+			{% endif %}
+    }
+</script>

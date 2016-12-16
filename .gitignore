@@ -15,5 +15,8 @@
 /vendor/
 /web/bundles/
 /.idea
-var/cache/
-web/css/themes/
+/.vscode
+.DS_Store
+/node_modules/
+/web/dist/
+npm-debug.log

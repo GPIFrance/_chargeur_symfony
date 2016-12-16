@@ -1,6 +1,7 @@
 {% set errorMsg = app.session.flashBag.get('error') %}
 {% set successMsg = app.session.flashBag.get('success') %}
 {% set noticeMsg = app.session.flashBag.get('notice') %}
+{% set _route = app.request.attributes.get('_route') %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,9 +18,11 @@
 <body>
 {% block body %}{% endblock %}
 {% block javascripts %}
+	{% include '@App/_components/environment.html.twig' %}
 	{% javascripts '@jquery_js' '@semantic_js' %}
 	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 {% endblock %}
+<script src="/dist/build.js"></script>
 </body>
 </html>

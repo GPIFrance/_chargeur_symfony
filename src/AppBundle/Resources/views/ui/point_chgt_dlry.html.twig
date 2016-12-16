@@ -1,0 +1,28 @@
+{% extends '@App/base.ui.html.twig' %}
+
+{% block title %}Points de chargement/livraison{% endblock %}
+
+{% block content_body %}
+	<div class="ui basic segment">
+		<h1 class="ui center aligned header">Points de chargement/livraison</h1>
+	</div>
+	<div class="ui equal width grid">
+		<div class="column">
+			<h2 class="ui center aligned icon header">
+				<i class="circular add icon"></i><a href="#">Ajouter une adresse</a>
+			</h2>
+		</div>
+		<div class="column">
+			<h2 class="ui center aligned icon header">
+				<i class="circular add icon"></i><a href="#">Supprimer des adresses</a>
+			</h2>
+		</div>
+	</div>
+	<ui-form></ui-form>
+{% endblock %}
+
+{% block content_script %}{{ parent() }}
+	<script>
+
+	</script>
+{% endblock %}

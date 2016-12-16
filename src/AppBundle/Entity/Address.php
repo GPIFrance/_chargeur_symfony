@@ -40,91 +40,91 @@ class Address
      *
      * @ORM\Column(name="address_1", type="string", length=255)
      */
-    private $address1 = '';
+    private $address1;
 
     /**
      * @var string
      *
      * @ORM\Column(name="address_2", type="string", length=255)
      */
-    private $address2 = '';
+    private $address2;
 
     /**
      * @var string
      *
      * @ORM\Column(name="address_3", type="string", length=255)
      */
-    private $address3 = '';
+    private $address3;
 
     /**
      * @var string
      *
      * @ORM\Column(name="address_4", type="string", length=255)
      */
-    private $address4 = '';
+    private $address4;
 
     /**
      * @var string
      *
      * @ORM\Column(name="address_5", type="string", length=255)
      */
-    private $address5 = '';
+    private $address5;
 
     /**
      * @var string
      *
      * @ORM\Column(name="zip_code", type="string", length=255)
      */
-    private $zipCode = '';
+    private $zipCode;
 
     /**
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
      */
-    private $city = '';
+    private $city;
 
     /**
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255)
      */
-    private $country = '';
+    private $country;
 
     /**
      * @var string
      *
      * @ORM\Column(name="comment", type="text")
      */
-    private $comment = '';
+    private $comment;
 
     /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
      */
-    private $phone = '';
+    private $phone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="cellphone", type="string", length=255)
      */
-    private $cellphone = '';
+    private $cellphone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fax", type="string", length=255)
      */
-    private $fax = '';
+    private $fax;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="def", type="boolean")
      */
-    private $def = false;
+    private $def;
 
     /**
      * @var string
@@ -139,6 +139,37 @@ class Address
      * @ORM\Column(name="rdv", type="boolean")
      */
     private $rdv = false;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
+     * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $user;
+
+    /**
+     * Address constructor.
+     */
+    public function __construct()
+    {
+        // Valeurs par défaut
+        $this->address1     = '';
+        $this->address2     = '';
+        $this->address3     = '';
+        $this->address4     = '';
+        $this->address5     = '';
+        $this->zipCode      = '';
+        $this->city         = '';
+        $this->country      = '';
+        $this->comment      = '';
+        $this->phone        = '';
+        $this->cellphone    = '';
+        $this->fax          = '';
+        $this->def          = false;
+        $this->addressCode  = '';
+        $this->rdv          = false;
+    }
 
     /**
      * Get id
@@ -556,5 +587,29 @@ class Address
     public function getRdv()
     {
         return $this->rdv;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Address
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

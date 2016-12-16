@@ -11,6 +11,11 @@ services:
         class: AppBundle\Twig\Extension\AppExtension
         arguments:
             doctrine: "@doctrine"
+            schemaService: "@app.table_schema"
         public: false
         tags:
             - { name: twig.extension }
+    app.table_schema:
+        class: AppBundle\Services\TableSchemaService
+        arguments:
+            nameSpace: "\\AppBundle\\Entity\\"
