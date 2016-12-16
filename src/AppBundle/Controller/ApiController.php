@@ -33,6 +33,8 @@ class ApiController extends Controller
         $this->response = new Response();
         $this->response->headers->set('Content-Type', 'application/json');
         $this->response->headers->set('Access-Control-Allow-Origin', '*');
+        $this->response->headers->set('Access-Control-Allow-Headers', 'origin, content-type, accept');
+        $this->response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
     }
 
     /**
